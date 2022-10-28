@@ -141,13 +141,13 @@ int MinSumJ(int[,] matr)
     }
     return minNum;
 }
-void Fillmatrix(int[,] matr, int n, int m)
+void Fillmatrix(int[,] matr)
 {
     Random random = new Random();
     for (int i = 0; i < matr.GetLength(0); i++)
     {
         for (int j = 0; j < matr.GetLength(1); j++)
-            matr[i, j] = random.Next(m, n);//[1; 10)
+            matr[i, j] = random.Next(1,10);//[1; 10)
     }
 }
 
@@ -223,11 +223,16 @@ PrintMatrix(matrix);
 
 Console.ReadKey();
 Console.Clear();
-int[,] matrix1 = new int[4, 6];
+// В прямоугольной матрице найти строку с наименьшей суммой элементов.
 
-Fillmatrix(matrix1, n, m);
+
+int[,] matrix1 = new int[4, 6];
+Fillmatrix(matrix1);
 Console.WriteLine();
 PrintMatrix(matrix1);
 
     
-Console.WriteLine($" Индекс строки {MinSumJ(matrix1)}");
+Console.WriteLine($" Cтрока с наименьшей суммой элементов {MinSumJ(matrix1)}");
+
+Console.ReadKey();
+Console.Clear();
