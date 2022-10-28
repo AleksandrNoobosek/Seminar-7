@@ -111,7 +111,7 @@ void Change(int[,] matrix)
     }
 }
 //В прямоугольной матрице найти строку с наименьшей суммой элементов.
-int MinSumI(int[,] matr,int m)
+int MinSumN(int[,] matr,int m)
 {
     int summin = 0;
     for (int n = 0; n < matr.GetLength(1); n++)
@@ -122,19 +122,19 @@ int MinSumI(int[,] matr,int m)
 int MinSumJ(int[,] matr)
 {
     int sum = 0;
-    int minSum = 0;
+    int min = 0;
     int minNum = 0;
     for (int m = 0; m < matr.GetLength(0); m++)
     {
     if (m == 0) 
             {
-                sum += MinSumI(matr,m);
-                minSum += MinSumI(matr,m); 
+                sum = MinSumN(matr,m);
+                min = MinSumN(matr,m); 
             }
-            else sum += MinSumI(matr,m);
-    if (sum < minSum)
+            else sum += MinSumN(matr,m);
+    if (sum < min)
     {
-        minSum = sum;
+        min = sum;
         minNum = m;
     }
         sum = 0;
