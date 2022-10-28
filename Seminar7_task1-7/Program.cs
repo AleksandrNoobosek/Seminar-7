@@ -1,5 +1,4 @@
 ﻿
-
 void PrintDoubleMatr(double[,] matr)
 {
     for (int m = 0; m < matr.GetLength(0); m++)
@@ -33,6 +32,7 @@ void PrintMatrix(int[,] matr)
     Console.WriteLine();
     }
 }
+
 //Задать двумерный массив следующим правилом: Aₘₙ = m+n
 void FillMatrix_M_N(int[,] matr)
 {
@@ -79,6 +79,7 @@ int sum = 0;
     return sum;    
 }
 //Дан целочисленный массив. Найти среднее арифметическое каждого из столбцов.
+
 string Pmatrix(int[,] matr)
 {
     string result = string.Empty;
@@ -96,6 +97,7 @@ string Pmatrix(int[,] matr)
 return result;
 }
 //Написать программу, которая обменивает элементы первой строки и последней строки
+
 void Change(int[,] matrix)
 {
     int temp = 0;
@@ -111,36 +113,30 @@ void Change(int[,] matrix)
     }
 }
 //В прямоугольной матрице найти строку с наименьшей суммой элементов.
-int MinSumN(int[,] matr,int m)
+int MinSumN(int[,] matr,int t)
 {
     int summin = 0;
-    for (int n = 0; n < matr.GetLength(1); n++)
-        summin += matr[m,n];
+    for (int x = 0; x < matr.GetLength(1); x++)
+        summin += matr[t,x];
     return summin;   
 }
-//
-int MinSumJ(int[,] matr)
+//В прямоугольной матрице найти строку с наименьшей суммой элементов.
+int MinSumJ(int[,] matr,int min)
 {
     int sum = 0;
-    int min = 0;
-    int minNum = 0;
-    for (int m = 0; m < matr.GetLength(0); m++)
+    int result = 0;
+    for (int t = 1; t < matr.GetLength(0); t++)
     {
-    if (m == 0) 
-            {
-                sum = MinSumN(matr,m);
-                min = MinSumN(matr,m); 
-            }
-            else sum += MinSumN(matr,m);
-    if (sum < min)
-    {
-        min = sum;
-        minNum = m;
-    }
-        sum = 0;
-    }
-    return minNum;
+        sum = MinSumN(matr,t);
+    if (min > sum) 
+        {
+            min=sum;
+            result = t;
+        }
+    }   
+    return result;
 }
+// заполнение под 
 void Fillmatrix(int[,] matr)
 {
     Random random = new Random();
@@ -223,6 +219,7 @@ PrintMatrix(matrix);
 
 Console.ReadKey();
 Console.Clear();
+
 // В прямоугольной матрице найти строку с наименьшей суммой элементов.
 Console.Write("Введите размер массива m: ");
 int i = int.Parse(Console.ReadLine() ?? "0");
@@ -233,7 +230,10 @@ Fillmatrix(matrix1);
 Console.WriteLine();
 PrintMatrix(matrix1);
 
-if (i!=j)Console.WriteLine($" Cтрока с наименьшей суммой элементов {MinSumJ(matrix1)}");
+int t = 0;
+int min = MinSumN(matrix1,t);
+
+if (i!=j)Console.WriteLine($" Cтрока с наименьшей суммой элементов {MinSumJ(matrix1,min)}");
 else Console.WriteLine($" Поиск Cтроки с наименьшей суммой элементов невозможен");
 
 Console.ReadKey();
